@@ -1,36 +1,96 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Facial Emotion Detection Chat
+
+This is a Next.js application that provides a chat interface for facial emotion detection using the [Facial-Emotion-Detection-SigLIP2](https://huggingface.co/prithivMLmods/Facial-Emotion-Detection-SigLIP2) model from Hugging Face.
+
+## Features
+
+- Chat interface
+- Upload images to detect emotions in faces
+- Dark/light mode support
+- Real-time emotion analysis
 
 ## Getting Started
 
-First, run the development server:
+First, clone the repository and install the dependencies:
 
 ```bash
+# Install Node.js dependencies
+npm install
+```
+
+### Setting up the Python Environment
+
+The application uses a Python backend with the transformers library to directly interact with the facial emotion detection model. To set up the Python environment:
+
+```bash
+# Create a Python virtual environment
+python3 -m venv venv
+
+# Activate the virtual environment
+source venv/bin/activate  # On Windows: venv\Scripts\activate
+
+# Install Python dependencies
+pip install flask flask-cors transformers torch pillow opencv-python
+```
+
+### Running the Application
+
+You can start both the Next.js frontend and Python backend together:
+
+```bash
+# Make sure the script is executable
+chmod +x start.sh
+
+# Run both servers with one command
+./start.sh
+```
+
+Or start them separately:
+
+```bash
+# Start the Python API server in one terminal
+source venv/bin/activate
+python app/api/emotion_server.py
+
+# Start the Next.js app in another terminal
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+## Using the Chat Interface
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+1. Type a message in the input field
+2. Click the camera icon to upload an image containing a face
+3. Submit your message
+4. The AI will analyze the image and respond with the detected emotion
 
-## Learn More
+## About the Model
 
-To learn more about Next.js, take a look at the following resources:
+The [Facial-Emotion-Detection-SigLIP2](https://huggingface.co/prithivMLmods/Facial-Emotion-Detection-SigLIP2) model is designed to detect emotions in facial images. It can recognize the following emotions:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- Happy
+- Sad
+- Angry
+- Surprised
+- Neutral
+- Fearful
+- Disgusted
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Implementation Details
 
-## Deploy on Vercel
+This application uses:
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- Next.js for the frontend framework
+- Python Flask API with the transformers library for direct model inference
+- The emoDet.py script to handle facial emotion detection
+- Tailwind CSS for styling
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Notes for Development
+
+- The application currently uses a mock emotion detection function for local development
+- To use the real Hugging Face model, ensure you've set up your API token
+
+## License
+
+MIT
