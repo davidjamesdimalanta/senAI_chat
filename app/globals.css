@@ -1,26 +1,126 @@
-@import "tailwindcss";
+/* Base styles */
+@import "tailwindcss/preflight";
+@tailwind utilities;
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #FFFFFF;
+  --foreground: #000501;
+  
+  /* Primary Colors */
+  --color-primary-black: #000501;
+  --color-primary-royal: #5728A5;
+  --color-primary-white: #FFFFFF;
+  
+  /* Neutral Colors */
+  --color-neutral-dark-grey: #333333;
+  --color-neutral-grey: #636566;
+  --color-neutral-light-grey: #DEDBDB;
+  
+  /* Secondary Colors */
+  --color-secondary-sky-blue: #d4f0fc;
+  --color-secondary-baby-blue: #89d6fb;
+  --color-secondary-meta-blue: #02a9f7;
+  --color-secondary-light-denim: #02577a;
+  --color-secondary-dark-denim: #01303f;
+  
+  /* Font Weights */
+  --font-weight-normal: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+  
+  /* Font Family */
+  --font-sans: "Albert Sans", sans-serif;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-sans: var(--font-sans);
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --background: #000501;
+    --foreground: #FFFFFF;
   }
 }
 
 body {
+  font-size: 16px;
+  line-height: 1.6;
+  font-weight: var(--font-weight-normal);
+  letter-spacing: 0;
+  font-family: var(--font-sans);
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Custom utility classes for font weights */
+.font-weight-normal {
+  font-weight: var(--font-weight-normal);
+}
+
+.font-weight-medium {
+  font-weight: var(--font-weight-medium);
+}
+
+.font-weight-semibold {
+  font-weight: var(--font-weight-semibold);
+}
+
+.font-weight-bold {
+  font-weight: var(--font-weight-bold);
+}
+
+/* Typography */
+h1 {
+  font-size: 36px;
+  line-height: 1.2;
+  font-weight: var(--font-weight-bold);
+  letter-spacing: 0;
+}
+
+h2 {
+  font-size: 28px;
+  line-height: 1.3;
+  font-weight: var(--font-weight-bold);
+  letter-spacing: 0;
+}
+
+h3 {
+  font-size: 24px;
+  line-height: 1.4;
+  font-weight: var(--font-weight-bold);
+  letter-spacing: 0;
+}
+
+.subheading {
+  font-size: 18px;
+  line-height: 1.5;
+  font-weight: var(--font-weight-bold);
+  letter-spacing: 0;
+}
+
+/* Mobile Typography */
+@media (max-width: 768px) {
+  h1 {
+    font-size: 30px;
+  }
+  
+  h2 {
+    font-size: 24px;
+  }
+  
+  h3 {
+    font-size: 20px;
+  }
+  
+  .subheading {
+    font-size: 16px;
+  }
+  
+  body {
+    font-size: 12px;
+  }
 }

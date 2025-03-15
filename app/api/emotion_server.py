@@ -30,17 +30,32 @@ def detect_emotion():
         if ',' in image_data:
             image_data = image_data.split(',')[1]
         
+        # Add debugging logs
+        print("Received image data, length:", len(image_data) if image_data else 0)
+        
         # Decode the base64 image
-        image_bytes = base64.b64decode(image_data)
+        try:
+            image_bytes = base64.b64decode(image_data)
+            print("Successfully decoded base64 data")
+        except Exception as e:
+            print("Base64 decoding error:", str(e))
+            return jsonify({'error': 'Invalid image encoding'}), 400
         
         # Convert to an image that can be processed
-        image = Image.open(io.BytesIO(image_bytes))
+        try:
+            image = Image.open(io.BytesIO(image_bytes))
+            print("Successfully opened image, format:", image.format, "size:", image.size)
+        except Exception as e:
+            print("Image opening error:", str(e))
+            return jsonify({'error': 'Could not open image'}), 400
         
         # Convert PIL Image to numpy array for emotion_classification
         image_np = np.array(image)
+        print("Converted to numpy array, shape:", image_np.shape)
         
         # Call the emotion_classification function
         results = emotion_classification(image_np)
+        print("Emotion classification results:", results)
         
         # Find the emotion with the highest confidence
         top_emotion = max(results.items(), key=lambda x: x[1])
@@ -52,6 +67,9 @@ def detect_emotion():
         })
     
     except Exception as e:
+        import traceback
+        print("ERROR:", str(e))
+        print(traceback.format_exc())
         return jsonify({'error': str(e)}), 500
 
 if __name__ == '__main__':

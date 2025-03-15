@@ -100,10 +100,10 @@ export default function Chat() {
     <div className="flex flex-col h-full">
       <div className="p-4 flex-1 overflow-y-auto">
         {!isApiRunning && (
-          <div className="mb-4 p-3 bg-yellow-100 dark:bg-yellow-900 text-yellow-800 dark:text-yellow-200 rounded-md">
+          <div className="mb-4 p-3 bg-secondary-sky-blue dark:bg-secondary-dark-denim text-secondary-dark-denim dark:text-secondary-sky-blue rounded-md">
             <p className="text-sm">
               ⚠️ Python API server is not running. Using mock emotion detection data instead.
-              Run the server with: <code>python app/api/emotion_server.py</code> from the project root.
+              Run the server with: <code className="font-mono bg-neutral-light-grey dark:bg-neutral-dark-grey p-1 rounded">python app/api/emotion_server.py</code> from the project root.
             </p>
           </div>
         )}
@@ -112,11 +112,11 @@ export default function Chat() {
         ))}
         {isLoading && (
           <div className="flex justify-start mb-4">
-            <div className="bg-gray-200 dark:bg-gray-800 py-3 px-4 rounded-lg">
+            <div className="bg-neutral-light-grey dark:bg-neutral-dark-grey py-3 px-4 rounded-lg">
               <div className="flex space-x-2">
-                <div className="w-2 h-2 rounded-full bg-gray-500 animate-bounce"></div>
-                <div className="w-2 h-2 rounded-full bg-gray-500 animate-bounce" style={{ animationDelay: '0.2s' }}></div>
-                <div className="w-2 h-2 rounded-full bg-gray-500 animate-bounce" style={{ animationDelay: '0.4s' }}></div>
+                <div className="w-2 h-2 rounded-full bg-neutral-grey animate-bounce"></div>
+                <div className="w-2 h-2 rounded-full bg-neutral-grey animate-bounce" style={{ animationDelay: '0.2s' }}></div>
+                <div className="w-2 h-2 rounded-full bg-neutral-grey animate-bounce" style={{ animationDelay: '0.4s' }}></div>
               </div>
             </div>
           </div>

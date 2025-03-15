@@ -44,7 +44,7 @@ export default function ChatInput({ onSendMessage }) {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="border-t border-gray-300 dark:border-gray-700 pt-4">
+    <form onSubmit={handleSubmit} className="border-t border-neutral-light-grey dark:border-neutral-grey pt-4">
       {imagePreview && (
         <div className="relative mb-2 inline-block">
           <img 
@@ -55,7 +55,7 @@ export default function ChatInput({ onSendMessage }) {
           <button
             type="button"
             onClick={removeImage}
-            className="absolute -top-2 -right-2 bg-red-500 text-white rounded-full w-5 h-5 flex items-center justify-center"
+            className="absolute -top-2 -right-2 bg-secondary-meta-blue text-primary-white rounded-full w-5 h-5 flex items-center justify-center"
           >
             ×
           </button>
@@ -67,12 +67,12 @@ export default function ChatInput({ onSendMessage }) {
           value={message}
           onChange={(e) => setMessage(e.target.value)}
           placeholder="Type a message..."
-          className="flex-1 py-2 px-4 bg-gray-100 dark:bg-gray-800 rounded-l-md focus:outline-none"
+          className="flex-1 py-2 px-4 bg-neutral-light-grey dark:bg-neutral-dark-grey text-primary-black dark:text-primary-white rounded-l-md focus:outline-none"
         />
         <button
           type="button"
           onClick={triggerFileInput}
-          className="p-2 bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-300 dark:hover:bg-gray-600"
+          className="p-2 bg-neutral-grey dark:bg-neutral-dark-grey text-primary-white hover:bg-neutral-dark-grey dark:hover:bg-neutral-grey"
         >
           📷
         </button>
@@ -85,7 +85,7 @@ export default function ChatInput({ onSendMessage }) {
         />
         <button
           type="submit"
-          className="p-2 bg-blue-500 text-white rounded-r-md hover:bg-blue-600 focus:outline-none"
+          className="p-2 bg-primary-royal text-primary-white rounded-r-md hover:opacity-90 focus:outline-none"
         >
           Send
         </button>

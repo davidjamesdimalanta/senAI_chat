@@ -6,17 +6,17 @@ export default function ChatMessage({ message, isUser }) {
     <div className={`flex ${isUser ? 'justify-end' : 'justify-start'} mb-4`}>
       <div className={`flex ${isUser ? 'flex-row-reverse' : 'flex-row'} max-w-[80%]`}>
         <div className={`w-10 h-10 rounded-full flex items-center justify-center ${isUser ? 'ml-3' : 'mr-3'} 
-                        ${isUser ? 'bg-blue-500' : 'bg-gray-300 dark:bg-gray-700'}`}>
+                        ${isUser ? 'bg-primary-royal' : 'bg-neutral-grey dark:bg-neutral-dark-grey'}`}>
           {isUser ? (
-            <span className="text-white text-sm">You</span>
+            <span className="text-primary-white text-sm">You</span>
           ) : (
-            <span className="text-white dark:text-gray-200 text-sm">AI</span>
+            <span className="text-primary-white dark:text-neutral-light-grey text-sm">AI</span>
           )}
         </div>
         <div className={`py-3 px-4 rounded-lg ${
           isUser 
-            ? 'bg-blue-500 text-white' 
-            : 'bg-gray-200 dark:bg-gray-800 text-gray-800 dark:text-gray-200'
+            ? 'bg-primary-royal text-primary-white' 
+            : 'bg-neutral-light-grey dark:bg-neutral-grey text-primary-black dark:text-primary-white'
         }`}>
           <p className="text-sm">{message.text}</p>
           {message.emotion && (

@@ -3,22 +3,26 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev --turbopack",
-    "build": "next build",
+    "dev": "concurrently \"npm run dev:css\" \"next dev\"",
+    "dev:css": "tailwindcss -o src/tailwind.css --watch",
+    "build": "npm run build:css && next build",
+    "build:css": "NODE_ENV=production tailwindcss -o src/tailwind.css -m",
     "start": "next start",
     "lint": "next lint"
   },
   "dependencies": {
     "@huggingface/inference": "^3.5.2",
     "next": "15.2.2",
+    "postcss": "^8.5.3",
     "react": "^19.0.0",
     "react-dom": "^19.0.0"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",
-    "@tailwindcss/postcss": "^4",
+    "@tailwindcss/postcss": "^4.0.14",
+    "autoprefixer": "^10.4.21",
     "eslint": "^9",
     "eslint-config-next": "15.2.2",
-    "tailwindcss": "^4"
+    "tailwindcss": "^4.0.14"
   }
 }
