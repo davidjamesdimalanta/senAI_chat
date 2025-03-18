@@ -5,6 +5,7 @@ module.exports = {
     './pages/**/*.{js,ts,jsx,tsx}',
     './components/**/*.{js,ts,jsx,tsx}',
   ],
+  darkMode: 'class',
   theme: {
     fontFamily: {
       'sans': ['Albert Sans', 'ui-sans-serif', 'system-ui', 'sans-serif'],
@@ -12,6 +13,7 @@ module.exports = {
     extend: {
       fontWeight: {
         // Explicitly define font weights for Tailwind CSS v4
+        'light': '300',
         'normal': '400',
         'medium': '500',
         'semibold': '600',
@@ -20,7 +22,7 @@ module.exports = {
       colors: {
         // Primary colors
         'primary': {
-          'black': '#000501',
+          'black': '#1e1e1e',
           'royal': '#5728A5',
           'white': '#FFFFFF',
         },
@@ -60,5 +62,16 @@ module.exports = {
       },
     },
   },
-  plugins: [],
+  plugins: [
+    function({ addUtilities }) {
+      addUtilities({
+        '.sen-gradient': {
+          'background-image': 'linear-gradient(to right, #d4f0fc, #02a9f7)',
+          'color': 'transparent',
+          'background-clip': 'text',
+          '-webkit-background-clip': 'text',
+        },
+      });
+    },
+  ],
 } 
